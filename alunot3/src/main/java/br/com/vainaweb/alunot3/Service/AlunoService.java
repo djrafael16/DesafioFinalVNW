@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.vainaweb.alunot3.Model.AlunoModel;
 import br.com.vainaweb.alunot3.Repository.AlunoRepository;
 import br.com.vainaweb.alunot3.dto.DadosAluno;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,7 @@ public String cadastrar(DadosAluno dados) {
 		}else {
 			repository.save(new AlunoModel(dados.nome(), dados.cpf(), dados.email(), dados.cargo(), dados.endereco())); //INSERT 
 			return "Cadastro efetuado com sucesso";
+		
 		}
 	
 		
