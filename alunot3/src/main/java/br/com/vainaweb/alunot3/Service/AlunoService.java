@@ -23,7 +23,7 @@ public class AlunoService {
 	@Autowired
 	private AlunoRepository repository;
 	
-	public List<AlunoModel> encontrarTodosOsColaboradores() {
+	public List<AlunoModel> encontrarTodosOsAlunos() {
 		return repository.findAll(); // SELECT * FROM tb_colaboradores;
 	}
 

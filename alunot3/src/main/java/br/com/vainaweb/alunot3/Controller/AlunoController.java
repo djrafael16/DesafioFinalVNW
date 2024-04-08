@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import br.com.vainaweb.alunot3.dto.DadosAluno;
+import br.com.vainaweb.alunot3.dto.DadosAtualizados;
+import br.com.vainaweb.alunot3.dto.Endereco;
+import br.com.vainaweb.alunot3.Model.AlunoModel;
+import br.com.vainaweb.alunot3.Repository.AlunoRepository;
+import br.com.vainaweb.alunot3.Service.AlunoService;
 
-import br.com.vainaweb.alunot3.dto.DadosColaborador;
-import br.com.vainaweb.alunot3.model.ColaboradorModel;
-import br.com.vainaweb.alunot3.repository.ColaboradorRepository;
-import br.com.vainaweb.alunot3.service.ColaboradorService;
-
-public class AlunoController {
 	
-	RestController
+	@RestController
 	@RequestMapping("/colaborador-teste")
 
 	// Classe responsavel por receber requisições e retornar respostas
@@ -33,8 +33,8 @@ public class AlunoController {
 
 		@GetMapping
 		public List<AlunoModel> listarTodosColaboradores() {
-		      return service.encontrarTodos();
-		}
+		      return service.encontrarTodosOsAlunos();	
+		      }
 		
 		@GetMapping("/{id}")
 		public ResponseEntity<AlunoModel> listarPorId(@PathVariable Long id) {
@@ -56,4 +56,3 @@ public class AlunoController {
 
 	}
 
-}

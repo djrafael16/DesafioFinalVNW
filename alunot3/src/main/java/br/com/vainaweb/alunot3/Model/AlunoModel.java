@@ -17,6 +17,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,10 +27,11 @@ import lombok.Setter;
 @Entity
 @Table(name = "tb_colaboradores" )
 
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+
 //será a classe responsavel pela entidade
 public class AlunoModel {
 	
@@ -40,13 +42,14 @@ public class AlunoModel {
 	
 	private String nome;
 	
+	@Email
 	@Column(unique = true)
 	private String email;
 	
-	
+	@CPF
 	@Column(unique = true)
 	private String cpf;
-	private Cargo cargo;
+	private Curso curso;
 	
 	@Embedded //Diz que o atributo será incorporado NESSA tabela
 	private Endereco endereco;
