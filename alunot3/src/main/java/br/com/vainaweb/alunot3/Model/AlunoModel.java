@@ -1,12 +1,8 @@
 package br.com.vainaweb.alunot3.Model;
 
 import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.validation.annotation.Validated;
-
 import br.com.vainaweb.alunot3.dto.DadosAluno;
 import br.com.vainaweb.alunot3.dto.DadosAtualizados;
-import br.com.vainaweb.alunot3.dto.EnderecoDTO;
-
 import br.com.vainaweb.alunot3.enums.Curso;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -17,8 +13,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Pattern;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +20,7 @@ import lombok.Setter;
 
 //Anotação que diz que essa classe é uma entidade
 @Entity
-@Table(name = "tb_aluno" )
+@Table(name = "tb_aluno")
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -67,7 +61,7 @@ public class AlunoModel {
 		this.cpf = dados.cpf();
 		this.telefone = dados.telefone();
 		this.curso = dados.curso();
-		this.endereco= new Endereco(dados.endereco().cep()
+		this.endereco = new Endereco(dados.endereco().cep()
 				, dados.endereco().logradouro(),
 				dados.endereco().bairro(), 
 				dados.endereco().cidade(), 

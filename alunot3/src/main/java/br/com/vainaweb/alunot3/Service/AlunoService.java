@@ -28,7 +28,7 @@ public class AlunoService {
 		return repository.findAll(); // SELECT * FROM tb_aluno;
 	}
 
-public Optional<AlunoModel> cadastrar(DadosAluno dados) {
+       public Optional<AlunoModel> cadastrar(DadosAluno dados) {
 		
 		var aluno = repository.findByCpf(dados.cpf());
 		
