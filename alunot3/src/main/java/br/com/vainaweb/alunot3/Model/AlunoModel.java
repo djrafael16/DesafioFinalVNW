@@ -3,8 +3,9 @@ package br.com.vainaweb.alunot3.Model;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.validation.annotation.Validated;
 
+import br.com.vainaweb.alunot3.dto.DadosAluno;
 import br.com.vainaweb.alunot3.dto.DadosAtualizados;
-import br.com.vainaweb.alunot3.dto.Endereco;
+import br.com.vainaweb.alunot3.dto.EnderecoDTO;
 
 import br.com.vainaweb.alunot3.enums.Curso;
 import jakarta.persistence.Column;
@@ -25,7 +26,7 @@ import lombok.Setter;
 
 //Anotação que diz que essa classe é uma entidade
 @Entity
-@Table(name = "tb_colaboradores" )
+@Table(name = "tb_aluno" )
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,39 +36,53 @@ import lombok.Setter;
 //será a classe responsavel pela entidade
 public class AlunoModel {
 	
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Auto incrementado
+	public Long id;
+
+	@Column(nullable = false)
 	private String nome;
-	
-	@Email
+
+	//@Email
 	@Column(unique = true)
 	private String email;
-	
-	@CPF
+
+	//@CPF
 	@Column(unique = true)
 	private String cpf;
+
+	@Column(nullable = false)
+	private String telefone;
+
+	@Column(nullable = false)
 	private Curso curso;
-	
-	@Embedded //Diz que o atributo será incorporado NESSA tabela
+
+	@Embedded
+	@Column(nullable = false)
 	private Endereco endereco;
-	
-	// |------------------------------------------CONSTRUTORES--------------------------------------|
-	public AlunoModel(String nome, String email, String cpf, Curso curso, Endereco endereco) {
-		this.nome = nome;
-		this.email = email;
-		this.cpf = cpf;
-		this.endereco = new Endereco(endereco.cep(), endereco.logradouro(), endereco.bairro(), endereco.cidade(),
-				endereco.uf(), endereco.complemento(), endereco.numero());
-		
+
+	public AlunoModel(DadosAluno dados) {
+		this.nome = dados.nome();
+		this.email = dados.email();
+		this.cpf = dados.cpf();
+		this.telefone = dados.telefone();
+		this.curso = dados.curso();
+		this.endereco= new Endereco(dados.endereco().cep()
+				, dados.endereco().logradouro(),
+				dados.endereco().bairro(), 
+				dados.endereco().cidade(), 
+				dados.endereco().uf(),
+				dados.endereco().complemento(),
+				dados.endereco().numero());
 	}
 
-	public void atualizarInfo(@Valid DadosAtualizados dados) {
-		this.nome = dados.nome() != null? dados.nome():this.nome;
-		this.email = dados.email() != null? dados.email():this.email;
-		
+
+	
+	public void atualizar(@Valid DadosAtualizados dados) {
+		this.nome = dados.nome() != null ? dados.nome() : this.nome;
+		this.email = dados.email() != null ? dados.email() : this.email;
+		this.telefone = dados.telefone() != null ? dados.telefone() : this.telefone;
 	}
+	
 	
 }

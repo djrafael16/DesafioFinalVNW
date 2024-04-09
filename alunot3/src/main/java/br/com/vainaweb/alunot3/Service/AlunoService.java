@@ -1,6 +1,7 @@
 package br.com.vainaweb.alunot3.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 import br.com.vainaweb.alunot3.Model.AlunoModel;
 import br.com.vainaweb.alunot3.Repository.AlunoRepository;
 import br.com.vainaweb.alunot3.dto.DadosAluno;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,18 +28,16 @@ public class AlunoService {
 		return repository.findAll(); // SELECT * FROM tb_colaboradores;
 	}
 
-public String cadastrar(DadosAluno dados) {
+public Optional<AlunoModel> cadastrar(DadosAluno dados) {
 		
-		var colaborador = repository.findByCpf(dados.cpf());
-	
-		if(colaborador.isPresent()) {
-			return "CPF Já cadastrado";
-		}else {
-			repository.save(new AlunoModel(dados.nome(), dados.cpf(), dados.email(), dados.cargo(), dados.endereco())); //INSERT 
-			return "Cadastro efetuado com sucesso";
+		var aluno = repository.findByCpf(dados.cpf());
 		
+		if(aluno.get().getCpf() != null || aluno.get().getEmail() != null) {
+			return Optional.empty();
 		}
-	
-		
-	}
+		else {
+			return Optional.of(repository.save(new AlunoModel(dados)));
+		}
+}
+
 }
