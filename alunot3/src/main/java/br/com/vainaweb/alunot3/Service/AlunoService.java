@@ -25,7 +25,7 @@ public class AlunoService {
 	private AlunoRepository repository;
 	
 	public List<AlunoModel> encontrarTodosOsAlunos() {
-		return repository.findAll(); // SELECT * FROM tb_colaboradores;
+		return repository.findAll(); // SELECT * FROM tb_aluno;
 	}
 
 public Optional<AlunoModel> cadastrar(DadosAluno dados) {

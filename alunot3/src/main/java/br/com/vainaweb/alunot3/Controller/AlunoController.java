@@ -24,7 +24,7 @@ import br.com.vainaweb.alunot3.Service.AlunoService;
 
 	
 	@RestController
-	@RequestMapping("/colaborador-teste")
+	@RequestMapping("/aluno")
 
 	// Classe responsavel por receber requisições e retornar respostas
 	public class AlunoController {

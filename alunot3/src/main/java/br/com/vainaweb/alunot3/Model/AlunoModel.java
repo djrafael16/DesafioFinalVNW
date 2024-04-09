@@ -43,11 +43,11 @@ public class AlunoModel {
 	@Column(nullable = false)
 	private String nome;
 
-	//@Email
+	@Email
 	@Column(unique = true)
 	private String email;
 
-	//@CPF
+	@CPF
 	@Column(unique = true)
 	private String cpf;
 
