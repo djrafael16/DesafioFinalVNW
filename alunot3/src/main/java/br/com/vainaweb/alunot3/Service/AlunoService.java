@@ -31,6 +31,7 @@ public class AlunoService {
    		}
 
    		return Optional.of(repository.save(new AlunoModel(dados)));
+   		
    	}
 		
 }

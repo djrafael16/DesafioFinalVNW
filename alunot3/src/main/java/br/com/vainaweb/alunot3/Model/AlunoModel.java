@@ -3,7 +3,6 @@ package br.com.vainaweb.alunot3.Model;
 import org.hibernate.validator.constraints.br.CPF;
 import br.com.vainaweb.alunot3.dto.DadosAluno;
 import br.com.vainaweb.alunot3.dto.DadosAtualizados;
-
 import br.com.vainaweb.alunot3.enums.Curso;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
