@@ -9,16 +9,8 @@ import org.springframework.stereotype.Service;
 import br.com.vainaweb.alunot3.Model.AlunoModel;
 import br.com.vainaweb.alunot3.Repository.AlunoRepository;
 import br.com.vainaweb.alunot3.dto.DadosAluno;
-import br.com.vainaweb.alunot3.dto.EnderecoDTO;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Service// Classe de serviço gerenciada pelo Spring
 public class AlunoService {
 
