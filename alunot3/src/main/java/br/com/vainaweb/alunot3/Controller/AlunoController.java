@@ -21,6 +21,7 @@ import jakarta.validation.Valid;
 import br.com.vainaweb.alunot3.Model.AlunoModel;
 import br.com.vainaweb.alunot3.Repository.AlunoRepository;
 import br.com.vainaweb.alunot3.Service.AlunoService;
+import br.com.vainaweb.alunot3.dto.EnderecoDTO;
 
 	
 	@RestController
@@ -49,14 +50,19 @@ import br.com.vainaweb.alunot3.Service.AlunoService;
 		}
 
 		
+		//@PostMapping
+		//public ResponseEntity<Object> cadastrar(@RequestBody DadosAluno dados) {
+		//	return service.cadastrar(dados).map(resposta -> ResponseEntity.status(HttpStatus.CREATED).build())
+		//			.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+			
+		//}
+		
 		@PostMapping
 		public ResponseEntity<Object> cadastrar(@RequestBody DadosAluno dados) {
 			return service.cadastrar(dados).map(resposta -> ResponseEntity.status(HttpStatus.CREATED).build())
 					.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 			
 		}
-		
-		
 		
 		@PutMapping("/{id}")
 		public ResponseEntity<Object> atualizar(@PathVariable Long id, @RequestBody @Valid DadosAtualizados dados) {

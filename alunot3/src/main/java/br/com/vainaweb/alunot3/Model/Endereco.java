@@ -10,7 +10,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Embeddable //Permite que a classe seja incorporada em outra tabela
 public class Endereco {
 	

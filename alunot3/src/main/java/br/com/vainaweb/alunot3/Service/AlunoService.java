@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.vainaweb.alunot3.Model.AlunoModel;
 import br.com.vainaweb.alunot3.Repository.AlunoRepository;
 import br.com.vainaweb.alunot3.dto.DadosAluno;
+import br.com.vainaweb.alunot3.dto.EnderecoDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,14 +31,15 @@ public class AlunoService {
 
        public Optional<AlunoModel> cadastrar(DadosAluno dados) {
 		
-		var aluno = repository.findByCpf(dados.cpf());
+    	   var cpfExistente = repository.existsByCpf(dados.cpf());
+   		var emailExistente = repository.existsByEmail(dados.email());
+
+   		if (cpfExistente || emailExistente) {
+   			return Optional.empty();
+   		}
+
+   		return Optional.of(repository.save(new AlunoModel(dados)));
+   	}
 		
-		if(aluno.get().getCpf() != null || aluno.get().getEmail() != null) {
-			return Optional.empty();
-		}
-		else {
-			return Optional.of(repository.save(new AlunoModel(dados)));
-		}
 }
 
-}
