@@ -3,7 +3,7 @@ package br.com.vainaweb.alunot3.Model;
 import org.hibernate.validator.constraints.br.CPF;
 import br.com.vainaweb.alunot3.dto.DadosAluno;
 import br.com.vainaweb.alunot3.dto.DadosAtualizados;
-import br.com.vainaweb.alunot3.dto.EnderecoDTO;
+
 import br.com.vainaweb.alunot3.enums.Curso;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
@@ -62,13 +62,14 @@ public class AlunoModel {
 		this.cpf = dados.cpf();
 		this.telefone = dados.telefone();
 		this.curso = dados.curso();
-		   this.endereco = new Endereco(dados.endereco().cep()
-			, dados.endereco().logradouro(),
-			dados.endereco().bairro(), 
-			dados.endereco().cidade(), 
-			dados.endereco().uf(),
-			dados.endereco().complemento(),
-		   dados.endereco().numero());
+		this.endereco = new Endereco(dados.endereco().cep()
+				, dados.endereco().logradouro(),
+				dados.endereco().bairro(), 
+				dados.endereco().cidade(), 
+				dados.endereco().uf(),
+				dados.endereco().complemento(),
+				dados.endereco().numero());
+				
 	}
 
 

@@ -32,7 +32,7 @@ public class AlunoService {
        public Optional<AlunoModel> cadastrar(DadosAluno dados) {
 		
     	   var cpfExistente = repository.existsByCpf(dados.cpf());
-   		var emailExistente = repository.existsByEmail(dados.email());
+   		   var emailExistente = repository.existsByEmail(dados.email());
 
    		if (cpfExistente || emailExistente) {
    			return Optional.empty();

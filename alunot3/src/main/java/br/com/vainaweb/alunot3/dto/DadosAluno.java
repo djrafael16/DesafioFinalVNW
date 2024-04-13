@@ -5,9 +5,6 @@ import jakarta.validation.Valid;
 
 public record DadosAluno(String nome, String cpf, String telefone, String email, Curso curso, @Valid EnderecoDTO endereco) {
 
-	public EnderecoDTO endereco() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+     
 }

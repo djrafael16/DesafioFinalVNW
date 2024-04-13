@@ -5,7 +5,7 @@ CREATE TABLE tb_aluno(
 	telefone VARCHAR(15) NOT NULL,
 	cpf VARCHAR(155) NOT NULL,
 	curso INT,
-	cep VARCHAR (7),
+	cep VARCHAR(20),
 	logradouro VARCHAR(155),
 	bairro VARCHAR(155),
 	cidade VARCHAR(155),
